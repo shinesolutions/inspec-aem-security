@@ -1,0 +1,8 @@
+name: aem-security
+title: AEM security InSpec profile
+maintainer: Shine Solutions
+copyright: Shine Solutions
+copyright_email: opensource@shinesolutions.com
+license: Apache-2.0
+summary: InSpec profile for compliance with AEM security checklist https://helpx.adobe.com/experience-manager/6-2/sites/administering/using/security-checklist.html
+version: 0.0.1
