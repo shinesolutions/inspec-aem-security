@@ -17,7 +17,8 @@ require 'capybara/poltergeist'
 require 'ruby_aem'
 
 def read_config
-  YAML.load_file('./conf/aem.yml')
+  conf_file = ENV['INSPEC_AEM_SECURITY_CONF'] || './conf/aem.yml'
+  YAML.load_file(conf_file)
 end
 
 def init_http_client(conf)
@@ -35,7 +36,7 @@ def init_aem_client(conf)
     password: conf['password'],
     protocol: conf['protocol'] || 'http',
     host: conf['host'] || 'localhost',
-    port: conf['port'] ? conf['port'].to_i : 4502,
+    port: conf['port'],
     debug: conf['debug'] ? conf['debug'] == true : false
   )
 end
