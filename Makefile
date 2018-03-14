@@ -11,13 +11,13 @@ test:
 	inspec exec .
 
 test-author:
-	inspec exec . --controls="author-non-default-admin-password"
+	inspec exec . --controls="author-*"
 
 test-publish:
-	inspec exec . --controls="publish-non-default-admin-password"
+	inspec exec . --controls="publish-*"
 
 test-publish-dispatcher:
-	inspec exec . --controls="publish-dispatcher-prevent-clickjacking"
+	inspec exec . --controls="publish-dispatcher-*"
 
 tools:
 	gem install bundler
