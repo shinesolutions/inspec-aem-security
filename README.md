@@ -8,25 +8,24 @@ An [InSpec](https://www.inspec.io) profile for compliance with [AEM security che
 Usage
 -----
 
-Run all checks with master branch version:
+Run profile directly from Chef Supermarket:
+
+    inspec supermarket exec shinesolutions/aem-security
+
+Run profile directly from GitHub:
 
     inspec exec https://github.com/shinesolutions/inspec-aem-security
 
-TODO: instruction to overwrite remote hosts
+Run all tests:
 
-Development
------------
+    make test
 
-Clone InSpec AEM Security:
+Run all tests with custom configuration file:
 
-    git clone https://github.com/shinesolutions/inspec-aem-security
+    INSPEC_AEM_SECURITY_CONF=some-aem.yaml make test
 
-Run all checks against local AEM author, publish, and publish-dispatcher:
+Run component specific tests:
 
-    make check
-
-Run specific checks per component:
-
-    make check-author
-    make check-publish
-    make check-publish-dispatcher
+    make test-author
+    make test-publish
+    make test-publish-dispatcher
