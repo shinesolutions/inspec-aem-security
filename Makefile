@@ -7,16 +7,16 @@ lint:
 	inspec check .
 	rubocop
 
-check:
+test:
 	inspec exec .
 
-check-author:
+test-author:
 	inspec exec . --controls="author-non-default-admin-password"
 
-check-publish:
+test-publish:
 	inspec exec . --controls="publish-non-default-admin-password"
 
-check-publish-dispatcher:
+test-publish-dispatcher:
 	inspec exec . --controls="publish-dispatcher-prevent-clickjacking"
 
 tools:

@@ -1,0 +1,12 @@
+author:
+  protocol: https
+  host: 13.55.246.168
+  port: 5432
+publish:
+  protocol: https
+  host: 13.55.246.168
+  port: 5433
+publish_dispatcher:
+  protocol: https
+  host: 13.55.246.168
+  port: 443
