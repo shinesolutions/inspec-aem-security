@@ -22,4 +22,4 @@ test-publish-dispatcher:
 tools:
 	gem install bundler
 
-.PHONY: ci deps lint check check-author check-publish check-dispatcher tools
+.PHONY: ci deps lint test test-author test-publish test-publish-dispatcher tools
