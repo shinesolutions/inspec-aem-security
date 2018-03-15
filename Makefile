@@ -11,10 +11,10 @@ test:
 	inspec exec .
 
 test-author:
-	inspec exec . --controls="author-*"
+	inspec exec . --controls="author-non-default-admin-password"
 
 test-publish:
-	inspec exec . --controls="publish-*"
+	inspec exec . --controls="publish-non-default-admin-password"
 
 test-publish-dispatcher:
 	inspec exec . --controls="publish-dispatcher-*"

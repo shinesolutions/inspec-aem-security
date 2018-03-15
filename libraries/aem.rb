@@ -24,26 +24,30 @@ class Aem < Inspec.resource(1)
     Custom resource for AEM, used by AEM Author and AEM Publish
   "
 
-  def initialize(component)
-    conf = read_config[component]
-    @client = init_aem_client(conf)
+  def initialize(aem_role)
+    @conf = read_config[aem_role]
+    @client = init_aem_client(@conf)
+    @aem_role = aem_role
 
     @params = {}
   end
 
   # should change default password for AEM admin account
   # https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html
-  def has_non_default_admin_password
+  def has_non_default_admin_password?
     @conf['username'] = 'admin'
     @conf['password'] = 'admin'
-    aem = init_aem_client(conf).aem
+    aem = init_aem_client(@conf).aem
 
     begin
-      aem.get_agents(aem_role)
+      aem.get_agents(@aem_role)
       has_non_default_admin_password = false
     rescue RubyAem::Error => error
-      has_non_default_admin_password = true if error.result.response.status_code.eql? 401
-      raise error
+      if error.result.response.status_code.eql? 401
+        has_non_default_admin_password = true
+      else
+        raise error
+      end
     end
     has_non_default_admin_password
   end
