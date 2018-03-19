@@ -3,7 +3,7 @@ author:
   host: localhost
   port: 5432
   verify_ssl: false
-  debug: true
+  debug: false
 publish:
   protocol: https
   host: localhost
