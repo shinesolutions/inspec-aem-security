@@ -42,11 +42,8 @@ class Aem < Inspec.resource(1)
       aem.get_agents(@aem_role)
       has_non_default_admin_password = false
     rescue RubyAem::Error => error
-      if error.result.response.status_code.eql? 401
-        has_non_default_admin_password = true
-      else
-        raise error
-      end
+      has_non_default_admin_password = true if error.result.response.status_code.eql? 401
+      raise error
     end
     has_non_default_admin_password
   end
