@@ -1,12 +1,14 @@
 author:
-  protocol: http
+  protocol: https
   host: localhost
-  port: 4502
-  debug: false
+  port: 5432
+  verify_ssl: false
+  debug: true
 publish:
-  protocol: http
+  protocol: https
   host: localhost
-  port: 4503
+  port: 5433
+  verify_ssl: false
   debug: false
 publish_dispatcher:
   protocol: https

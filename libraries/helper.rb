@@ -37,6 +37,7 @@ def init_aem_client(conf)
     protocol: conf['protocol'] || 'http',
     host: conf['host'] || 'localhost',
     port: conf['port'],
+    verify_ssl: conf['verify_ssl'] ? conf['verify_ssl'] == true : false,
     debug: conf['debug'] ? conf['debug'] == true : false
   )
 end

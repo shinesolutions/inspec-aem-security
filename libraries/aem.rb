@@ -26,7 +26,6 @@ class Aem < Inspec.resource(1)
 
   def initialize(aem_role)
     @conf = read_config[aem_role]
-    @client = init_aem_client(@conf)
     @aem_role = aem_role
 
     @params = {}

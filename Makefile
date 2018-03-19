@@ -1,5 +1,8 @@
 ci: tools deps lint
 
+clean:
+	rm Gemfile.lock inspec.lock
+
 deps:
 	bundle install
 
@@ -17,9 +20,9 @@ test-publish:
 	inspec exec . --controls="publish-non-default-admin-password"
 
 test-publish-dispatcher:
-	inspec exec . --controls="publish-dispatcher-*"
+	inspec exec . --controls="publish-dispatcher-prevent-clickjacking"
 
 tools:
 	gem install bundler
 
-.PHONY: ci deps lint test test-author test-publish test-publish-dispatcher tools
+.PHONY: ci clean deps lint test test-author test-publish test-publish-dispatcher tools
