@@ -36,10 +36,14 @@ class Aem < Inspec.resource(1)
   def has_non_default_admin_password?
     @conf['username'] = 'admin'
     @conf['password'] = 'admin'
-    aem = init_aem_client(@conf).aem
+    client = init_aem_client(@conf)
 
     begin
-      aem.get_agents(@aem_role)
+      if @aem_role == 'author'
+        client.aem.get_agents(@aem_role)
+      elsif @aem_role == 'publish'
+        client.bundle('com.adobe.cq.social.cq-social-forum').start
+      end
       has_non_default_admin_password = false
     rescue RubyAem::Error => error
       has_non_default_admin_password = true if error.result.response.status_code.eql? 401
