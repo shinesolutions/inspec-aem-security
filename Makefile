@@ -14,13 +14,17 @@ test:
 	inspec exec .
 
 test-author:
-	inspec exec . --controls="author-non-default-admin-password"
+	inspec exec . --controls=author-non-default-admin-password
 
 test-publish:
-	inspec exec . --controls="publish-non-default-admin-password"
+	inspec exec . --controls=publish-non-default-admin-password
 
 test-publish-dispatcher:
-	inspec exec . --controls="publish-dispatcher-prevent-clickjacking"
+	inspec exec . --controls=\
+	  publish-dispatcher-prevent-clickjacking \
+		publish-dispatcher-deny-administrative-urls \
+		publish-dispatcher-deny-etc-libs \
+		publish-dispatcher-deny-invalidate-cache
 
 tools:
 	gem install bundler
