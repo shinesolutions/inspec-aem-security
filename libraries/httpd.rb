@@ -31,23 +31,25 @@ class Httpd < Inspec.resource(1)
     @params = {}
   end
 
-  # should have X-FRAME-OPTIONS header set to SAMEORIGIN
-  # https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html
-  def has_same_origin_x_frame_options?
+  def has_response_header_with_value?(header, value)
     visit '/'
-    response_headers['X-Frame-Options'].eql? 'SAMEORIGIN'
+    response_headers[header].eql? value
   end
 
-  # should deny access to administrative URLs
-  # https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html
-  def has_administrative_urls_denied?
-    administrative_urls = File.readlines('conf/administrative_paths.txt')
-    has_urls_denied?(administrative_urls)
-  end
+  def has_path_with_status_code?(path, status_code, opts = nil)
+    # set headers
+    Capybara.current_session.driver.add_headers(opts.headers) if opts.headers
 
-  # should deny access to root directories of /etc and /libs'
-  def has_etc_libs_denied?
-    has_urls_denied?(['/etc/', '/libs/'])
+    visit path
+
+    # follow redirect since Capybara does not do this automatically
+    visit response_headers['Location'] if response_headers.key?('Location')
+
+    # wait for page load to prevent missing checks
+    # https://stackoverflow.com/questions/36108196/how-to-get-poltergeist-phantomjs-to-delay-returning-the-page-to-capybara-until-a
+    page.has_content?('.+')
+
+    page.status_code.eql? status_code
   end
 
   def has_urls_denied?(urls)
@@ -68,17 +70,5 @@ class Httpd < Inspec.resource(1)
       end
     end
     has_urls_denied
-  end
-
-  # should not be able to invalidate Dispatcher cache
-  # https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html
-  def has_invalidate_cache_denied?
-    # set http headers to invalidate cache
-    headers = { 'CQ-Handle' => '/content', 'CQ-Path' => '/content' }
-    Capybara.current_session.driver.add_headers(headers)
-    visit '/dispatcher/invalidate.cache'
-
-    # NOTE: AEM documentation states 404, but default Dispatcher config returns 403
-    page.status_code.eql? 403
   end
 end
