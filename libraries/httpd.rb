@@ -51,24 +51,4 @@ class Httpd < Inspec.resource(1)
 
     page.status_code.eql? status_code
   end
-
-  def has_urls_denied?(urls)
-    has_urls_denied = true
-    urls.each do |url|
-      visit url
-      # follow redirect since Capybara does not do this automatically
-      visit response_headers['Location'] if response_headers.key?('Location')
-      # wait for page load to prevent missing checks
-      # https://stackoverflow.com/questions/36108196/how-to-get-poltergeist-phantomjs-to-delay-returning-the-page-to-capybara-until-a
-      page.has_content?('.+')
-
-      puts "Checking denied url: #{page.status_code} - #{url}"
-
-      unless page.status_code.eql? 404
-        has_urls_denied = false
-        break
-      end
-    end
-    has_urls_denied
-  end
 end
