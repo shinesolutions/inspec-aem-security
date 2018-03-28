@@ -25,18 +25,21 @@ class Httpd < Inspec.resource(1)
   "
 
   def initialize(component)
-    conf = read_config[component]
-    @client = init_http_client(conf)
+    @conf = read_config[component]
 
     @params = {}
   end
 
   def has_response_header_with_value?(header, value)
+    init_capybara_client(@conf)
+
     visit '/'
     response_headers[header].eql? value
   end
 
   def has_path_with_status_code?(path, status_code, opts = {})
+    init_capybara_client(@conf)
+
     # set headers
     Capybara.current_session.driver.add_headers(opts['headers']) if opts['headers']
 
