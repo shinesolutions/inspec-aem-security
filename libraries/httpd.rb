@@ -36,9 +36,9 @@ class Httpd < Inspec.resource(1)
     response_headers[header].eql? value
   end
 
-  def has_path_with_status_code?(path, status_code, opts = nil)
+  def has_path_with_status_code?(path, status_code, opts = {})
     # set headers
-    Capybara.current_session.driver.add_headers(opts.headers) if opts.headers
+    Capybara.current_session.driver.add_headers(opts['headers']) if opts['headers']
 
     visit path
 
