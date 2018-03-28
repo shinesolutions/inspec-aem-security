@@ -21,7 +21,7 @@ def read_config
   YAML.load_file(conf_file)
 end
 
-def init_http_client(conf)
+def init_capybara_client(conf)
   Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, js_errors: false)
   end
@@ -30,7 +30,7 @@ def init_http_client(conf)
   Capybara.app_host = "#{conf['protocol']}://#{conf['host']}:#{conf['port']}"
 end
 
-def init_aem_client(conf)
+def init_ruby_aem_client(conf)
   RubyAem::Aem.new(
     username: conf['username'],
     password: conf['password'],

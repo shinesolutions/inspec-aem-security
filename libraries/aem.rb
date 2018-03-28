@@ -25,9 +25,8 @@ class Aem < Inspec.resource(1)
   "
 
   def initialize(component)
-    conf = read_config[component]
-    @aem_client = init_aem_client(conf)
-    @http_client = init_http_client(conf)
+    @conf = read_config[component]
+    @ruby_aem = init_ruby_aem_client(@conf)
 
     @params = {}
   end
@@ -35,12 +34,12 @@ class Aem < Inspec.resource(1)
   # should change default password for AEM admin account
   # https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html
   def able_to_login_with_credential?(username, password)
+    init_capybara_client(@conf)
+
     visit '/libs/granite/core/content/login.html'
     fill_in('username', with: username)
     fill_in('password', with: password)
     click_button('submit-button')
-    error = find('#error').text
-    puts error
-    false
+    page.title == 'AEM Projects'
   end
 end
