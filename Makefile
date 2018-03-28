@@ -14,13 +14,13 @@ test:
 	inspec exec .
 
 test-author:
-	inspec exec . --controls=author-non-default-admin-password
+	inspec exec . --show-progress --controls=author-non-default-admin-password
 
 test-publish:
-	inspec exec . --controls=publish-non-default-admin-password
+	inspec exec . --show-progress --controls=publish-non-default-admin-password
 
 test-publish-dispatcher:
-	inspec exec . --controls=\
+	inspec exec . --show-progress --controls=\
 	  publish-dispatcher-prevent-clickjacking \
 		publish-dispatcher-deny-administrative-urls \
 		publish-dispatcher-deny-etc-libs \
