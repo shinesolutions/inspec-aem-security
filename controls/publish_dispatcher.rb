@@ -38,15 +38,16 @@ control 'publish-dispatcher-deny-invalidate-cache' do
   title 'Check invalidate Dispatcher cache is denied'
   desc 'Should not be able to invalidate Dispatcher cache'
   describe httpd('publish_dispatcher') do
-    # should not be able to invalidate Dispatcher cache
-    # https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html
-    # TODO: AEM documentation states 404, but default Dispatcher config returns 403, investigate why
     opts = {
       'headers' => {
         'CQ-Handle' => '/content',
         'CQ-Path' => '/content'
       }
     }
+    # should not be able to invalidate Dispatcher cache
+    # https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html
+    # TODO: AEM documentation states 404, but default Dispatcher config returns 403,
+    # this is due to https://github.com/shinesolutions/puppet-aem-resources/issues/29
     it { should have_path_with_status_code('/dispatcher/invalidate.cache', 403, opts) }
   end
 end
