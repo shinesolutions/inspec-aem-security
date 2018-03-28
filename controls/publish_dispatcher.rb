@@ -5,7 +5,7 @@ control 'publish-dispatcher-prevent-clickjacking' do
   describe httpd('publish_dispatcher') do
     # should have X-FRAME-OPTIONS header set to SAMEORIGIN
     # https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html
-    it { should have_response_header_with_value('X-Frame-Options', 'SAMEORIGIN')}
+    it { should have_response_header_with_value('X-Frame-Options', 'SAMEORIGIN') }
   end
 end
 
