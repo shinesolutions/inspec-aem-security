@@ -1,2 +1,5 @@
-Gemfile.lock
+.bundle/
+.git/
+bin/
+vendor/
 inspec.lock

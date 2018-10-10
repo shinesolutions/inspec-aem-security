@@ -1,26 +1,27 @@
 ci: tools deps lint
 
 clean:
-	rm Gemfile.lock inspec.lock
+	rm *.lock bin vendor
 
 deps:
-	bundle install
+	bundle config --local path vendor/bundle
+	bundle install --binstubs
 
 lint:
-	inspec check .
-	rubocop
+	bundle exec inspec check .
+	bundle exec rubocop Gemfile controls/ libraries/
 
 test:
-	inspec exec .
+	bundle exec inspec exec .
 
 test-author:
-	inspec exec . --show-progress --controls=author-non-default-admin-password
+	bundle exec inspec exec . --show-progress --controls=author-non-default-admin-password
 
 test-publish:
-	inspec exec . --show-progress --controls=publish-non-default-admin-password
+	bundle exec inspec exec . --show-progress --controls=publish-non-default-admin-password
 
 test-publish-dispatcher:
-	inspec exec . --show-progress --controls=\
+	bundle exec inspec exec . --show-progress --controls=\
 	  publish-dispatcher-prevent-clickjacking \
 		publish-dispatcher-deny-administrative-urls \
 		publish-dispatcher-deny-etc-libs \
