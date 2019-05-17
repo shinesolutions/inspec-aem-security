@@ -1,9 +1,10 @@
-ci: tools deps lint
+ci: clean deps lint
 
 clean:
 	rm *.lock bin vendor
 
 deps:
+	gem install bundler --version=1.17.3
 	bundle config --local path vendor/bundle
 	bundle install --binstubs
 
@@ -27,10 +28,7 @@ test-publish-dispatcher:
 		publish-dispatcher-deny-etc-libs \
 		publish-dispatcher-deny-invalidate-cache
 
-tools:
-	gem install bundler
-
 release:
 	rtk release
 
-.PHONY: ci clean deps lint test test-author test-publish test-publish-dispatcher tools release
+.PHONY: ci clean deps lint test test-author test-publish test-publish-dispatcher release
