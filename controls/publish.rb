@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'publish-non-default-admin-password' do
   impact 1.0
   title 'Check AEM does not use default admin password'

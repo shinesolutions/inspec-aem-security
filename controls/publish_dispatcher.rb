@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'publish-dispatcher-prevent-clickjacking' do
   impact 1.0
   title 'Check clickjacking prevention setup'
