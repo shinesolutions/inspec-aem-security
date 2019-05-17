@@ -30,4 +30,7 @@ test-publish-dispatcher:
 tools:
 	gem install bundler
 
-.PHONY: ci clean deps lint test test-author test-publish test-publish-dispatcher tools
+release:
+	rtk release
+
+.PHONY: ci clean deps lint test test-author test-publish test-publish-dispatcher tools release
