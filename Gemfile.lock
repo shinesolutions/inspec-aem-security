@@ -161,6 +161,7 @@ GEM
       winrm (~> 2.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yaml-lint (0.0.10)
 
 PLATFORMS
   ruby
@@ -171,6 +172,7 @@ DEPENDENCIES
   poltergeist (= 1.18.1)
   rubocop (= 0.69.0)
   ruby_aem (= 2.5.1)
+  yaml-lint (= 0.0.10)
 
 BUNDLED WITH
    1.17.3
