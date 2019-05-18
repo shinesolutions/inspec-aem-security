@@ -27,7 +27,7 @@ GEM
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    ffi (1.10.0)
+    ffi (1.11.0)
     gssapi (1.3.0)
       ffi (>= 1.0.1)
     gyoku (1.3.1)
@@ -173,4 +173,4 @@ DEPENDENCIES
   ruby_aem (= 2.5.1)
 
 BUNDLED WITH
-   1.17.3
+   2.0.1
