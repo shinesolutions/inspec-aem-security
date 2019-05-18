@@ -6,7 +6,8 @@ clean:
 deps:
 	gem install bundler --version=1.17.3
 	bundle config --local path vendor/bundle
-	bundle install --binstubs --no-deployment
+	rm -rf .bundle
+	bundle install --binstubs
 
 lint:
 	bundle exec inspec check .
