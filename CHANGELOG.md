@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Added
+- Check invalidate cache response against 403 and 404 #1
 
 ## 0.10.2 - 2019-05-18
 ### Fixed
