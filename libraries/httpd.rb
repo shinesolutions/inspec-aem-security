@@ -58,6 +58,6 @@ class Httpd < Inspec.resource(1)
   end
 
   def has_path_within_status_codes?(path, status_codes, opts = {})
-    status_codes.any? {|status_code| should has_path_with_status_code?(path, status_code, opts)}
+    status_codes.any? { |status_code| should has_path_with_status_code?(path, status_code, opts) }
   end
 end
