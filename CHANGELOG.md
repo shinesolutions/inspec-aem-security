@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Makefile clean target also removes Gemfile.lock file
+
+### Fixed
+- Fixed outdated Gemfile.lock file
+
 ## 1.0.0 - 2019-08-27
 ### Added
 - Check invalidate cache response against 403 and 404 [#1]
