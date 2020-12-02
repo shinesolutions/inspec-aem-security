@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/shinesolutions/inspec-aem-security.svg)](http://travis-ci.org/shinesolutions/inspec-aem-security)
+[![Build Status](https://github.com/shinesolutions/inspec-aem-security/workflows/CI/badge.svg)](https://github.com/shinesolutions/inspec-aem-security/actions?query=workflow%3ACI)
 
 InSpec AEM Security
 -------------------
