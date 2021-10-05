@@ -29,7 +29,15 @@ test-publish-dispatcher:
 		publish-dispatcher-deny-etc-libs \
 		publish-dispatcher-deny-invalidate-cache
 
-release:
-	rtk release
+release-major:
+	rtk release --release-increment-type major
 
-.PHONY: ci clean deps lint test test-author test-publish test-publish-dispatcher release
+release-minor:
+	rtk release --release-increment-type minor
+
+release-patch:
+	rtk release --release-increment-type patch
+
+release: release-minor
+
+.PHONY: ci clean deps lint test test-author test-publish test-publish-dispatcher release release-major release-minor release-patch

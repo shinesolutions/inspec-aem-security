@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add release-* GH Actions
+
 ## 1.1.0 - 2020-02-17
 ### Changed
 - Makefile clean target also removes Gemfile.lock file
