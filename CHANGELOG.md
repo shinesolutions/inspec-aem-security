@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Upgrade Capybara to 3.30.0
 - Use configuration debug property value for Capybara and PhantomJS debugging
+- Allow PhantomJS to handle any SSL protocol
 
 ## 1.1.1 - 2021-10-05
 ### Added
