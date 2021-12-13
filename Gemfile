@@ -2,7 +2,8 @@
 
 source 'https://rubygems.org'
 
-gem 'capybara', '3.20.0'
+# Using Capybara 3.30.0 due to AOC's use of Ruby 2.4
+gem 'capybara', '3.30.0'
 # TODO: set InSpec dependency to ~> 2 after chef/train and chef/inspec have upgraded aws-sdk dependency to ~> 3
 #       https://github.com/inspec/train/pull/305
 gem 'inspec', '1.51.6'
