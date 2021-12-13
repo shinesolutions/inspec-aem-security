@@ -25,7 +25,7 @@ end
 
 def init_capybara_client(conf)
   Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, js_errors: false)
+    Capybara::Poltergeist::Driver.new(app, js_errors: false, debug: conf['debug'], phantomjs_options: ["--debug=#{conf['debug']}"]))
   end
 
   Capybara.current_driver = :poltergeist
