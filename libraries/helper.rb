@@ -25,7 +25,8 @@ end
 
 def init_capybara_client(conf)
   Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, js_errors: false, debug: conf['debug'], phantomjs_options: ["--debug=#{conf['debug']}", "--ssl-protocol=any"]))
+    ignore_ssl_errors_value = conf['verify_ssl'] == false ? 'yes' : 'no'
+    Capybara::Poltergeist::Driver.new(app, js_errors: false, debug: conf['debug'], phantomjs_options: ["--debug=#{conf['debug']}", "--ignore-ssl-errors=#{ignore_ssl_errors_value}", "--ssl-protocol=any"]))
   end
 
   Capybara.current_driver = :poltergeist
