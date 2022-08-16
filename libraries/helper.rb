@@ -18,34 +18,45 @@ require 'capybara/dsl'
 require 'capybara/poltergeist'
 require 'ruby_aem'
 
-def read_config
+def read_config(component)
   conf_file = ENV['INSPEC_AEM_SECURITY_CONF'] || './conf/aem.yml'
-  YAML.load_file(conf_file)
+  config = YAML.load_file(conf_file)[component] if File.exist?(conf_file)
+  config_params = {}
+
+  %w[protocol host port verify_ssl debug].each { |field|
+    env_field = format('aem_%<field>s', field: field)
+    if !ENV[env_field].nil?
+      config_params[:"#{field}"] = ENV[env_field]
+    elsif !config.nil? && !config[field].nil?
+      config_params[:"#{field}"] = config[field]
+    end
+  }
+  config_params
 end
 
 def init_capybara_client(conf)
   Capybara.register_driver :poltergeist do |app|
-    ignore_ssl_errors_value = conf['verify_ssl'] == false ? 'yes' : 'no'
+    ignore_ssl_errors_value = conf[:verify_ssl] == false ? 'yes' : 'no'
     phantomjs_options_value = [
-      "--debug=#{conf['debug']}",
+      "--debug=#{conf[:debug]}",
       "--ignore-ssl-errors=#{ignore_ssl_errors_value}",
       '--ssl-protocol=any'
     ]
-    Capybara::Poltergeist::Driver.new(app, js_errors: false, debug: conf['debug'], phantomjs_options: phantomjs_options_value)
+    Capybara::Poltergeist::Driver.new(app, js_errors: false, debug: conf[:debug], phantomjs_options: phantomjs_options_value)
   end
 
   Capybara.current_driver = :poltergeist
-  Capybara.app_host = "#{conf['protocol']}://#{conf['host']}:#{conf['port']}"
+  Capybara.app_host = "#{conf[:protocol]}://#{conf[:host]}:#{conf[:port]}"
 end
 
 def init_ruby_aem_client(conf)
   RubyAem::Aem.new(
-    username: conf['username'],
-    password: conf['password'],
-    protocol: conf['protocol'] || 'http',
-    host: conf['host'] || 'localhost',
-    port: conf['port'],
-    verify_ssl: conf['verify_ssl'] ? conf['verify_ssl'] == true : false,
-    debug: conf['debug'] ? conf['debug'] == true : false
+    username: conf[:username],
+    password: conf[:password],
+    protocol: conf[:protocol] || 'http',
+    host: conf[:host] || 'localhost',
+    port: conf[:port],
+    verify_ssl: conf[:verify_ssl] ? conf[:verify_ssl] == true : false,
+    debug: conf[:debug] ? conf[:debug] == true : false
   )
 end
