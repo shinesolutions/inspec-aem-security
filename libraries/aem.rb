@@ -27,7 +27,7 @@ class Aem < Inspec.resource(1)
   "
 
   def initialize(component)
-    @conf = read_config[component]
+    @conf = read_config(component)
     @ruby_aem = init_ruby_aem_client(@conf)
 
     @params = {}
