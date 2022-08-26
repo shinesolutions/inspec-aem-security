@@ -23,7 +23,7 @@ def read_config(component)
   config = YAML.load_file(conf_file)[component] if File.exist?(conf_file)
   config_params = {}
 
-  %w[protocol host port verify_ssl debug].each { |field|
+  %w[protocol host port verify_ssl debug use_proxy].each { |field|
     env_field = format('aem_%<field>s', field: field)
     if !ENV[env_field].nil?
       config_params[:"#{field}"] = ENV[env_field]
@@ -37,10 +37,12 @@ end
 def init_capybara_client(conf)
   Capybara.register_driver :poltergeist do |app|
     ignore_ssl_errors_value = conf[:verify_ssl] == false ? 'yes' : 'no'
+    use_proxy = conf[:use_proxy] == false ? 'none' : 'http'
     phantomjs_options_value = [
       "--debug=#{conf[:debug]}",
       "--ignore-ssl-errors=#{ignore_ssl_errors_value}",
-      '--ssl-protocol=any'
+      '--ssl-protocol=any',
+      "--proxy-type=#{use_proxy}",
     ]
     Capybara::Poltergeist::Driver.new(app, js_errors: false, debug: conf[:debug], phantomjs_options: phantomjs_options_value)
   end
