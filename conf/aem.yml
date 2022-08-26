@@ -4,13 +4,16 @@ author:
   port: 5432
   verify_ssl: false
   debug: false
+  use_proxy: false
 publish:
   protocol: https
   host: localhost
   port: 5433
   verify_ssl: false
   debug: false
+  use_proxy: false
 publish_dispatcher:
   protocol: https
   host: localhost
   port: 443
+  use_proxy: false
