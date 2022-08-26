@@ -42,7 +42,7 @@ def init_capybara_client(conf)
       "--debug=#{conf[:debug]}",
       "--ignore-ssl-errors=#{ignore_ssl_errors_value}",
       '--ssl-protocol=any',
-      "--proxy-type=#{use_proxy}",
+      "--proxy-type=#{use_proxy}"
     ]
     Capybara::Poltergeist::Driver.new(app, js_errors: false, debug: conf[:debug], phantomjs_options: phantomjs_options_value)
   end
