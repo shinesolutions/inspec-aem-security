@@ -30,8 +30,7 @@ control 'publish-dispatcher-deny-vulnerable-urls' do
   title 'Check access to vulnerable URLs is denied '
   desc 'Dispatcher filters should block access to the following pages and scripts on AEM publish instances.'
   describe httpd('publish_dispatcher') do
-    # should deny access to administrative URLs
-    # https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html
+    # should deny access to vulnerable URLs
     vulnerable_paths = File.readlines('conf/vulnerable_paths.txt')
     vulnerable_paths.each do |path|
       it { should have_path_with_status_code(path, 404) }
