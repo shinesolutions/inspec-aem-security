@@ -1,0 +1,2 @@
+/etc.clientlibs/dam/clientlibs/assetinsights/pagetracker.js/.[./.[./.[./.[./.[./etc/truststore.1.json
+/etc.clientlibs/dam/clientlibs/assetinsights/pagetracker.js/.[./.[./.[./.[./.[./etc/truststore/truststore.p12
