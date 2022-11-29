@@ -26,6 +26,7 @@ test-publish-dispatcher:
 	bundle exec inspec exec . --show-progress --controls=\
 	  publish-dispatcher-prevent-clickjacking \
 		publish-dispatcher-deny-administrative-urls \
+		publish-dispatcher-deny-vulnerable-urls \
 		publish-dispatcher-deny-etc-libs \
 		publish-dispatcher-deny-invalidate-cache
 
