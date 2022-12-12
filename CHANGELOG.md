@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 ### Added
-- Added new aem vulnerable paths in vulnerable_paths.txt file.
+- Added new aem vulnerable paths in vulnerable_paths.txt file RS-28
 
 ## 1.5.0 - 2022-11-29
 ### Added
-- Added aem vulnerable endpoints in vulnerable_paths.txt file.
+- Added aem vulnerable endpoints in vulnerable_paths.txt file RS-29
 - Added `publish-dispatcher-deny-vulnerable-urls` control for security testing.
 
 ## 1.4.0 - 2022-08-26
