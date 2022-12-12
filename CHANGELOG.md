@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added aem vulnerable endpoints in vulnerable_paths.txt file.
 - Added `publish-dispatcher-deny-vulnerable-urls` control for security testing.
 
+## 1.5.0 - 2022-11-29
+### Added
+- Added aem vulnerable endpoints in vulnerable_paths.txt file.
+- Added `publish-dispatcher-deny-vulnerable-urls` control for security testing.
+
 ## 1.4.0 - 2022-08-26
 ### Added
 - Add new configuration parameter `use_proxy` to bypass proxy for security testing [#15]
