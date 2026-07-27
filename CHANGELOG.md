@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Simplify GitHub Actions release workflows to not use custom action
+
 ## 1.6.0 - 2022-12-12
 ### Added
 - Added new aem vulnerable paths in vulnerable_paths.txt file RS-28
