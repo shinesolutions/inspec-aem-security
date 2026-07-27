@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Simplify GitHub Actions release workflows to not use custom action
 
+### Fixed
+- Fix release workflows to use SHINEOPENSOURCE_GITHUB_TOKEN instead of SHINEWORKS_GITHUB_TOKEN, matching this repo's original token
+
 ## 1.6.0 - 2022-12-12
 ### Added
 - Added new aem vulnerable paths in vulnerable_paths.txt file RS-28
