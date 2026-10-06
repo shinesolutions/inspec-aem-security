@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replace inspec Gem with Cinc version
 - Update RuboCop configuration for Gemfile linting
 
+### Fixed
+- Fix Ruby code to align with RuboCop recommendations
+
 ## 1.6.0 - 2022-12-12
 ### Added
 - Added new aem vulnerable paths in vulnerable_paths.txt file RS-28
