@@ -1,6 +1,8 @@
 # TODO: re-enable Metric/AbcSize, Metrics/CyclomaticComplexity, and Metrics/PerceivedComplexity
 AllCops:
   DisplayCopNames: true
+  NewCops: disable
+  SuggestExtensions: false
 Metrics/AbcSize:
   Enabled: false
 Metrics/BlockLength:
@@ -8,7 +10,7 @@ Metrics/BlockLength:
     - "**/**/*_spec.rb"
 Metrics/ClassLength:
   Max: 300
-Metrics/LineLength:
+Layout/LineLength:
   Max: 280
 Metrics/MethodLength:
   Max: 30
@@ -18,12 +20,9 @@ Metrics/PerceivedComplexity:
   Enabled: false
 Naming/AccessorMethodName:
   Enabled: false
-Style/BracesAroundHashParameters:
-  EnforcedStyle: context_dependent
 Style/BlockDelimiters:
   Enabled: false
-# enable Style/PredicateName as part of ruby_aem v2
-Style/PredicateName:
+Naming/PredicatePrefix:
   Enabled: false
 Style/RaiseArgs:
   EnforcedStyle: compact

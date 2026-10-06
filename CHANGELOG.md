@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Upgrade various Gems to newer versions
 - Replace inspec Gem with Cinc version
+- Update RuboCop configuration for Gemfile linting
 
 ## 1.6.0 - 2022-12-12
 ### Added
