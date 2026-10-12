@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gem 'poltergeist', '1.18.1'
 gem 'rubocop', '1.90.0', require: false
-gem 'ruby_aem', '2.5.1'
+gem 'ruby_aem', '4.0.2'
 gem 'yaml-lint', '0.1.2', require: false
 
 # Pull standard-named 'inspec' directly from Cinc's open-source gem mirror
