@@ -4,8 +4,9 @@ clean:
 	rm -rf inspec.lock Gemfile.lock bin vendor
 
 deps:
-	gem install bundler --version=1.17.3
-	bundle config --local path vendor/bundle
+	gem install bundler --version=4.0.22
+	rm -rf .bundle
+	bundle config set --local path vendor/bundle
 	bundle install
 	bundle binstubs --all
 
