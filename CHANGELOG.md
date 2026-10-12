@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add shellcheck, yamllint, and jsonlint to lint target
+
 ### Changed
+- Increase min Ruby support to 4.0
 - Simplify GitHub Actions release workflows to not use custom action
 
 ### Fixed
