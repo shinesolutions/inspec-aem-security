@@ -1,8 +1,15 @@
-# TODO: re-enable Metric/AbcSize, Metrics/CyclomaticComplexity, and Metrics/PerceivedComplexity
+inherit_mode:
+  merge:
+    - Exclude
 AllCops:
+  TargetRubyVersion: 4.0
   DisplayCopNames: true
-  NewCops: disable
-  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - .bundle/*
+    - bin/*
+Layout/LineLength:
+  Max: 280
 Metrics/AbcSize:
   Enabled: false
 Metrics/BlockLength:
@@ -10,19 +17,24 @@ Metrics/BlockLength:
     - "**/**/*_spec.rb"
 Metrics/ClassLength:
   Max: 300
-Layout/LineLength:
-  Max: 280
 Metrics/MethodLength:
-  Max: 30
+  Max: 40
+Metrics/ModuleLength:
+  Max: 120
 Metrics/CyclomaticComplexity:
   Enabled: false
 Metrics/PerceivedComplexity:
   Enabled: false
 Naming/AccessorMethodName:
   Enabled: false
+# enable Naming/PredicatePrefix as part of ruby_aem v2
+Naming/PredicatePrefix:
+  Enabled: false
 Style/BlockDelimiters:
   Enabled: false
-Naming/PredicatePrefix:
+Style/ExpandPathArguments:
+  Enabled: false
+Style/FrozenStringLiteralComment:
   Enabled: false
 Style/RaiseArgs:
   EnforcedStyle: compact
