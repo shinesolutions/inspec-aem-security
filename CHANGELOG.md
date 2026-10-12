@@ -7,12 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 ### Changed
+- Simplify GitHub Actions release workflows to not use custom action
 - Upgrade various Gems to newer versions
 - Replace inspec Gem with Cinc version
 - Update RuboCop configuration for Gemfile linting
 - Upgrade ruby_aem to 4.0.2
 
 ### Fixed
+- Fix release workflows to use SHINEOPENSOURCE_GITHUB_TOKEN instead of SHINEWORKS_GITHUB_TOKEN, matching this repo's original token
 - Fix Ruby code to align with RuboCop recommendations
 
 ## 1.6.0 - 2022-12-12
