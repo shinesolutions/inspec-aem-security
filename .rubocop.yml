@@ -1,3 +1,5 @@
+---
+# TODO: re-enable Metric/AbcSize, Metrics/CyclomaticComplexity, and Metrics/PerceivedComplexity
 inherit_mode:
   merge:
     - Exclude
