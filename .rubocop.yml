@@ -1,3 +1,4 @@
+---
 # TODO: re-enable Metric/AbcSize, Metrics/CyclomaticComplexity, and Metrics/PerceivedComplexity
 AllCops:
   DisplayCopNames: true
