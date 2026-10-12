@@ -26,7 +26,7 @@ def read_config(component)
   %w[protocol host port verify_ssl debug use_proxy].each { |field|
     env_field = format('aem_%<field>s', field: field)
     if !ENV[env_field].nil?
-      config_params[:"#{field}"] = ENV[env_field]
+      config_params[:"#{field}"] = ENV.fetch(env_field, nil)
     elsif !config.nil? && !config[field].nil?
       config_params[:"#{field}"] = config[field]
     end

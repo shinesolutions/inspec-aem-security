@@ -14,12 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative './helper'
+require_relative 'helper'
 
 # Aem class contains security checks relevant to an AEM instance,
 # used by AEM Author and AEM Publish
 class Aem < Inspec.resource(1)
   include Capybara::DSL
+
   name 'aem'
 
   desc "

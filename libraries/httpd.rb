@@ -14,12 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative './helper'
+require_relative 'helper'
 
 # Httpd class contains security checks relevant to an Apache httpd instance
 # used by AEM Author Dispatcher and AEM Publish Dispatcher
 class Httpd < Inspec.resource(1)
   include Capybara::DSL
+
   name 'httpd'
 
   desc "
