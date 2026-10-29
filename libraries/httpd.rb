@@ -28,7 +28,7 @@ class Httpd < Inspec.resource(1)
   "
 
   def initialize(component)
-    super
+    super()
     @conf = read_config(component)
 
     @params = {}
